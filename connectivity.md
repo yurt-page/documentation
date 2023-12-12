@@ -56,11 +56,14 @@ https://community.torproject.org/onion-services/overview/
 A client also needs for Tor installed but also onion domains aren't human readable.
 Still, this is a good option if you need to connect two yurts because the Tor is forever for free and stable.
 
+**UPD** I added luci-app-tor so now users can configure an Onion Service from GUI.
+
 ## SSH tunnel
 The OpenWrt's Dropbear ssh (dbclient) supports the port forwarding. But they are slow. OpenWrt has a sshtunnel package to reconnect but it depends on OpenSSH client.
 I partially fixed this https://github.com/openwrt/packages/pull/21263
 
 See https://openwrt.org/docs/guide-user/services/ssh/sshtunnel
+**UPD** I added luci-app-sshtunnel so now users can configure tunnels from GUI.
 
 ### Tunnel providers and software
 See [Awesome Tunneling](https://github.com/anderspitman/awesome-tunneling)
