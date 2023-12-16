@@ -139,18 +139,18 @@ But we can't make a load balancing because the firewall doesn't track connection
 https://community.home-assistant.io/t/why-use-reverse-proxy-vs-port-forwarding/101653/2
 
 ### Proxies solutions
+* [Lighttpd mod_proxy](https://redmine.lighttpd.net/projects/lighttpd/wiki/Mod_proxy) doesn't support a raw TLS for SMTP. But we can PR this.
+* Nginx (1mb) supports all but it's too heavy. It is used by [Sandstorm  for SMTP proxy](https://docs.sandstorm.io/en/latest/administering/email/#configure-port-25-the-advanced-way-proxy-smtp)
+* haproxy... just to mention. 900kb not that bad.
+* BusyBox httpd has some very basic http proxy which looks like more to be used as a forward proxy.
+* TinyProxy - a forward proxy without TLS termination but looks like a good place where to add the functionality and it was requested few times. Already has OpenWrt package and developed by related peoples.
+* [sslh](https://github.com/yrutschle/sslh) is a DPI miltiplexet when all ports except of 443 are blocked. You can use 443 port for both TLS and SSH the the sslh will split traffic. It can route HTTP and TLS based on SNI. It has an OpenWrt package and quite often used. But it's too big and actually can be reduced ten times.
 * [sniproxy](https://github.com/dlundquist/sniproxy) It's only SNI e.g. no TLS termination. Has Ubuntu package. Used by Sandstorm.io.
-* https://github.com/yrutschle/sslh SNI only. has an OpenWrt package.
 * https://github.com/Intika-Linux-Proxy/SNI-SSL-Proxy SNI with forwarding to SOCKS5
 * https://github.com/0x7a657573/zroxy SNI
 * https://github.com/topics/tls-proxy?l=c&o=desc&s=stars manuy others written in C
 * https://github.com/mtrojnar/stunnel full TLS termination. Only OpenSSL, code is complicated. Supports Windows.
 * https://github.com/varnish/hitch  full TLS termination. 
-* [Lighttpd mod_proxy](https://redmine.lighttpd.net/projects/lighttpd/wiki/Mod_proxy) doesn't support a raw TLS for SMTP.
-* haproxy (900kb)
-* Nginx (1mb) supports all but it's too heavy. It is used by [Sandstorm  for SMTP proxy](https://docs.sandstorm.io/en/latest/administering/email/#configure-port-25-the-advanced-way-proxy-smtp)
-* BusyBox httpd has some very basic http proxy which looks like more to be used as a forward proxy.
-* TinyProxy - a forward proxy without TLS termination but looks like a good place where to add the functionality and it was requested few times. Already has OpenWrt package and developed by related peoples.
 * https://github.com/vesvault/snif something complicated but looks related. From author of https://vesmail.email/
 
 One possible solution would be to add the TLS proxy functionality into OpenSSL tools.
@@ -158,3 +158,7 @@ Since we already have some kind of http server (see above) then by small extendi
 This will make the OpenSSL __even bigger__ but from the other side it's already ported to all platforms and often is pre-installed by default.
 With these changes almost all devs will have a basic http and proxy server for quick and simple tasks and be used in tutorials. This is not that weird idea.
 
+#### ebpf routing
+Basic HTTP and even TLS are not so dificult to parse. 
+We can use ebpf to parse right in the kernel level and route to a specific port.
+https://github.com/yurt-page/ebpf-web-proxy
