@@ -169,6 +169,9 @@ For the Web UI we can use the JMAP. We may try to use it with OpenWrt UBUS over 
 But for beginning the simplest UI can just work over WebDAV and show a letter by `GET`ting it's file directly from UI.
 To send an email we may create a special folder Outgoing and trigger the ER to send all new files in it.
 If we anyway have the WebDAV then we don't need any additional software.
+Existing Webmail solutions:
+* https://github.com/resend/react-email
+* https://roundcube.net/
 
 ## Generate addresses
 Similarly to Gmail `+` addresses:
