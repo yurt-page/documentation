@@ -140,11 +140,23 @@ It would be great to have a mnemonic names:
 ## P2P DNS based on DHT
 DNS must be authoritative but DHT doesn't guarantee that a record will be found or that the returned record is not faked.
 
-### KadNode
+### KadNode - DynDNS alternative.
 The [KadNode](https://github.com/mwarning/KadNode) is P2P DNS with content key, crypto key and PKI support.
 See [KadNode talk](https://www.youtube.com/watch?v=DFFNEoEYItE). It's in German, use auto-translate.
 
-DynDNS alternative.
+This is basically DNS over Torrent DHT (Kadmelia). The DHT is slow so the domain may be not resolved before timeout.
+The DHT is great because there is no a DB but also adds some level of stablity against outages or attacks.
+The Tor network also uses own DHT but it's more advanced: not only faster but also makes re-hash daily to protect from generating of similar hashes for a specific domain and thus catching search requests and thus get approximate count of visits.
+As a random source for re-hashing the Tor takes last block hash from Bitcoin blockchain which is a cool idea by itself and may be used in other places.
+
+By itself the domains can be usual e.g. real registered or just a ECC public key e.g. free but ugly.
+Once KadNode resolves an IP it will try to connect itself and check that cert corresponds.
+This saves from connecting to another server with the IP of outdated domain.
+E.g. KadNode makes the same check that a browser makes when checks that a cert's domain corresponding to the domain.
+This adds an addional delay still, not so big.
+
+The KadNode is based on mbedTLS that doesn't have ed25519 so it also can't generate onion-like domains.
+This is not a big deal but having interchangable domains is a nice thing to have.
 
 ## IPNS from IPFS
 https://docs.ipfs.tech/concepts/ipns/
@@ -171,6 +183,7 @@ https://lsd.gnunet.org/lsd0001/
 ## DNS SEC
 * https://mforney.org/blog/2020-05-21-securing-your-zone-with-dnssec-and-dane.html
 * https://berthub.eu/dnssec/
+* [DNSSEC Keys and Signing Process manually with openssl-tools](https://gist.github.com/stokito/e401279d405040565e8eb874c024a2c7)
 
 ## DANE
 The DANE protocol used to set a TLS cert with DSN record. This makes possible to have HTTPS for .bit and .onion domains i.e. without a CA.
