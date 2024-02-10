@@ -70,7 +70,7 @@ See [Awesome Tunneling](https://github.com/anderspitman/awesome-tunneling)
 
 Most interesting are:
 * [pagekite](https://pagekite.net/home/) Uses HTTP proxy like protocol with an additional encryption. One of the oldest. Has openwrt package and Luci app. Allows to deploy own server instance (called frontend). See [PageKite intro](https://www.youtube.com/watch?v=SRhK05KjxYA) and [Accessing your Mbed device from anywhere using Pagekite How to create a Mbed library for Pagekite](https://www.youtube.com/watch?v=23BS7kdQMzw). Paid plain is quite expensive.
-* [CloudFlare](https://www.cloudflare.com/products/tunnel/)
+* [CloudFlare](https://www.cloudflare.com/products/tunnel/) has a free plan but it's too havy for most routers.
 * [localhost.run](https://localhost.run/) SSH tunnel. The server side is not FOSS. Here is some details about internals https://medium.com/localhost-run/localhost-run-the-origin-story-5aeaf5692dee. Paid plain is quite expensive and free plan doesn't allow for stable domain.
 * https://git.sequentialread.com/sqr/greenhouse  https://greenhouse-alpha.server.garden/ TCP reverse tunnel in NodeJS. Free to use and the server side is FOSS
 * https://telebit.cloud/ written in NodeJs
