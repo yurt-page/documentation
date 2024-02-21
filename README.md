@@ -56,6 +56,7 @@ The problems are solved by social network: you see everything that your friends 
 
 ## Features
 * [Email](./email.md)
+* [Messenger](chat_and_messenger.md)
 * [Blog](./blog.md)
 * [Auth](./auth.md)
 
