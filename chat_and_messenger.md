@@ -14,11 +14,12 @@ I call them "mass messangers" and today everybody forgot the old Instant Messang
 The main success was achieved by a few simple solutions and principles:
 
 1. Big centralized silos that is easy to use. With the XMPP you must find yourself a server to trust and to talk with your buddy your servers must be in a federation. Each word in this sentence is a big pain.
-2. Using just a phone number as your id instead of ICQ number or a XMPP `nickname@server`. This is reusing of an existing centralization.
-3. Load all your phone contacts to a server and build your buddy list automatically.
-4. Just don't use encryption and use a binary protocols for a best speed. XMPP folks spent a lot of time on this topic and mostly failed.
-5. Mobile first design: chats just naturally and quickly replaced SMS **and calls** in mass market.
-6. All the above also allowed to build a perfect system for surveillance and chat companies almost not faced big obstacles. 
+2. Almost unlimitted cloud storage for photos, videos and voice messages. Many people just using messangers to transfer files. With XMPP servers that was almost not possible. 
+3. Using just a phone number as your id instead of ICQ number or a XMPP `nickname@server`. This is reusing of an existing centralization.
+4. Load all your phone contacts to a server and build your buddy list automatically.
+5. Just don't use encryption and use a binary protocols for a best speed. XMPP folks spent a lot of time on this topic and mostly failed.
+6. Mobile first design: chats just naturally and quickly replaced SMS **and calls** in mass market.
+7. All the above also allowed to build a perfect system for surveillance and chat companies almost not faced big obstacles. 
 
 An adoption of mass messangers was so fast that in almost all countries almost all users "belongs" to a just a few silos.
 And unlike social networks which are mostly meme photos for teenagers here we received an extremely dangerous situation when talks of serious peoples like politics, businessman or military personnel are monitored in real time.
@@ -51,7 +52,7 @@ But it also can be useful in a natural way. For example I'm using different mess
 * MS Teams, Flock, Slack or even Discord for a corporate job discussions.
 
 ## Own messanger
-So for my family and friends I need my own messanger with a server. And here we have not so many options:
+So for my family and friends I need my own messanger with a server. I need a server for a file storage, End-to-End (E2E) encryption and ideally ability to work on local network in serverless mode. And here we have not so many options:
 
 * Telegram has [open source clones](https://alternativeto.net/software/telegram/) with E2E encryption. Almost zero problems with migration. Still centralized and Android only.
 * Signal, Wire etc. Not so many advantages over Telegram + E2E. Higher possibility that they will be blocked (or less given that TG is more popular).
@@ -59,7 +60,8 @@ So for my family and friends I need my own messanger with a server. And here we 
 * [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)) P2P E2E DHT
 * Own XMPP server. We may try [Prosody](https://prosody.im/) on OpenWrt router.
 * Own Matrix server: written in Python and too heavy with the only advantage that it has good clients e.g. Element.io.
-* IRC. No.
-* [FChat](https://github.com/stokito/pidgin-fchat) a simple(st) UDP based chat for local network. The only one in its class.
+* [FChat](https://github.com/stokito/pidgin-fchat) a simple(st) UDP based chat for local network without a server. The only one in its class.
 * [NileshTrivedi/family](https://github.com/nileshtrivedi/family) A messaging app for closed, trusted groups. Outdated but has good design principles.
 * Anything web based: WebRTC+WebSockets. Needs for some TLS certificate.
+
+A best comparision of secure chats https://bkil.gitlab.io/secuchart/
