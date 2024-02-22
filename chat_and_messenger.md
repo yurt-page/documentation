@@ -16,7 +16,7 @@ The main success was achieved by a few simple solutions and principles:
 1. Big centralized silos that is easy to use. With the XMPP you must find yourself a server to trust and to talk with your buddy your servers must be in a federation. Each word in this sentence is a big pain.
 2. Almost unlimitted cloud storage for photos, videos and voice messages. Many people just using messangers to transfer files. With XMPP servers that was almost not possible. 
 3. Using just a phone number as your id instead of ICQ number or a XMPP `nickname@server`. This is reusing of an existing centralization.
-4. Load all your phone contacts to a server and build your buddy list automatically.
+4. Load all your phone contacts to a server and build your buddy list automatically. The contact discovery also has a downside that almost anyone can find your contacts https://habr.com/ru/companies/vdsina/articles/518298/.
 5. Just don't use encryption and use a binary protocols for a best speed. XMPP folks spent a lot of time on this topic and mostly failed.
 6. Mobile first design: chats just naturally and quickly replaced SMS **and calls** in mass market.
 7. All the above also allowed to build a perfect system for surveillance and chat companies almost not faced big obstacles. 
@@ -58,9 +58,9 @@ So for my family and friends I need my own messanger with a server. I need a ser
 * Signal, Wire etc. Not so many advantages over Telegram + E2E. Higher possibility that they will be blocked (or less given that TG is more popular).
 * [meshenger](https://github.com/meshenger-app/meshenger-android) P2P calls without the need for accounts or access to the Internet. There is no discovery mechanism, no meshing and no servers: just scan each others QR-Code. Android only.
 * [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)) P2P E2E DHT
-* Own XMPP server. We may try [Prosody](https://prosody.im/) on OpenWrt router.
+* Own XMPP server. We may try [Prosody](https://prosody.im/) on OpenWrt router. Looks like XMPP can work in XEP-0174: Serverless Messaging
 * Own Matrix server: written in Python and too heavy with the only advantage that it has good clients e.g. Element.io.
-* [FChat](https://github.com/stokito/pidgin-fchat) a simple(st) UDP based chat for local network without a server. The only one in its class.
+* [FChat](https://github.com/stokito/pidgin-fchat) a simple(st) UDP based chat for local network without a server. The only one in its class. **UPD** https://www.kouchat.net/ has even Android app.
 * [NileshTrivedi/family](https://github.com/nileshtrivedi/family) A messaging app for closed, trusted groups. Outdated but has good design principles.
 * Anything web based: WebRTC+WebSockets. Needs for some TLS certificate.
 
