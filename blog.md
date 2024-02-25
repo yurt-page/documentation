@@ -26,8 +26,8 @@ Key features and ideas:
 ### Another interesting solutions
 Basically any static site generator may be used like [Hugo](https://gohugo.io/) and [it's alternatives](https://www.google.com/search?q=hugo+alternatives).
 But they all are written in Go/Ruby/PHP and it's hard to put them on a router.
-Hugo in Go, [Grav CMS](https://learn.getgrav.org/17/basics/what-is-grav): in PHP, 
-[Ghost](https://github.com/TryGhost/Ghost) and 
+Hugo in Go, [Grav CMS](https://learn.getgrav.org/17/basics/what-is-grav): in PHP,
+[Ghost](https://github.com/TryGhost/Ghost) and
 [11ty](https://github.com/11ty/eleventy/) in NodeJS.
 The https://www.htmly.com/ in PHP
 
@@ -44,3 +44,80 @@ WebDAV based blog engines:
 
 * [indieforums](https://www.indieforums.net/threads/024f3f45f725dba0.html)
 * https://searchmysite.net/ search by indie blogs
+
+## Compression
+My entire blog for ten years in Wordpress when exported to RSS (XMl) is only about 3mb. So it may be served even from a 4mb router if remove Luci from it and compress the rss and then uncompress into memory (/tmp) and serve.
+Basically the squashfs on the OpenWrt use the LZMA compression so the additional compression may be not needed.
+
+We can serve the pre-compressed file directly with `Content-Encoding: gzip` and save a network bandwith.
+Browsers supports only deflate, gzip, brotli, and Chrome now also supports zstd. The RSS is usually consumed by RSS readers that may support only deflate and gzip. Two Yurts may use any compression which they like e.g LZMA but this is a last resort.
+
+* deflate compression uses a 32k window without a dictionary. Fast and effective.
+* gzip is a deflate with a checksum. This is a de-facto standard default encryption. OpenWrt have the gzip command out of the box.
+* lzma gives a best compression, but extreemely slow on compression and decompression. The OpenWrt uses it for SquashFS but there is no xz command out of the box. One of my ideas was to bring the lzma compressor from the SquashFS to user space command.
+* brotli has a dictionary for web assets (HTML, JS and CSS) and has slow compression but fast enough decompression. It may be too heavy to install on routers. The format is really bad by itself: no concatenation, no magic header. Most advantages comes from the good dictionary.
+* zstd has a good compression speed and it can be a replacement for gzip as a default. You can use a dictionary to improve. With a maximum level it almost like xz but with a better decompression speed.
+
+Here is a comparission of compression ratio of the rss.xml and size of all separate posts gzipped:
+
+| file        | bytes   | ratio |
+|-------------|---------|-------|
+| rss.xml     | 3104010 |       |
+| rss.xml.gz  | 665879  | 21%   |
+| rss.xml.zst | 463984  | 14%   |
+| rss.xml.xz  | 450184  | 14%   |
+| rss.xml.br  | 437314  | 14%   |
+| post.*.gz   | 911604  | 29%   |
+
+Just gzip makes the rss five times smaller. With Brotli it can be seven times smaller.
+But gzipped files can be processed on OpenWrt backend more easily.
+
+As a trick we can use gzip or any other compression on a browser side.
+When a user posting an article to a blog a JS library compress the post before sending to OpenWrt backend.
+A backend may need to decompress it to validate but if you are posting to own blog then the step can be skipped.
+Even if you need to decompress on a backend to validate that would be less expensive job than validate and compress.
+This also saves a bandwidth (not so important if you post once a week).
+One day (but in far feature) browsers will start to support compressed requests:
+* https://stackoverflow.com/questions/424917/why-cant-browser-send-gzip-request
+* https://support.google.com/chrome/thread/182178237/sending-compressed-request-from-browser-to-api-server
+* https://stackoverflow.com/questions/7555902/is-it-possible-to-use-content-encoding-gzip-in-a-http-post-request
+
+
+The JS libraries by itself may be bigger than the zstd or brotli installed on a backend.
+But they can be served from CDN.
+
+If we split RSS to separate posts then we can serve each post separately and render it to HTML by JS.
+This will save a space and simplify.
+Additionally for RSS readers we can return only last posts concatenated.
+
+When splitting posts and compress them separately then compression ratio is worse but still remains good enough i.e. 29%.
+
+Files compressed with gzip can be simply concatenated and decompressed as one file.
+The problem is that browsers don't support this https://issues.chromium.org/issues/40990701
+Browsers seems to use the [inflateInit2](https://github.com/madler/zlib/blob/develop/zlib.h#L837) function:
+
+    Unlike the gunzip utility and gzread() (see
+    below), inflate() will *not* automatically decode concatenated gzip members.
+    inflate() will return Z_STREAM_END at the end of the gzip member.  The state
+    would need to be reset to continue decoding a subsequent gzip member.  This
+    *must* be done if there is more data after a gzip member, in order for the
+    decompression to be compliant with the gzip standard (RFC 1952).
+
+This must be easy to fix but difficult to marge into mainline. Anyway this work needs to be done as a side project.
+
+Good news is that the concatenation works for raw deflate and zstd.
+The gzip utility doesn't support creation of raw deflate (both GNU gzip, BusyBox gzip and even pigz).
+
+I created the [deflate](https://github.com/stokito/deflate) tool for tests.
+But we may use the gzip and then extract the raw deflate by removing header and tail checksum:
+
+```sh
+echo "hello" | gzip > hello.txt.gz
+cat hello.txt.gz | tail --bytes=+11 | head --bytes=-8 > hello.txt.deflate
+```
+
+As an alternative, we may deflate with a JS library [pako](https://github.com/nodeca/pako) (15kb minified).
+Same is possible with zstd.
+
+So as a conclusion the better option would be to use an RSS split to posts, minified and compressed with deflate in a browser with the pako.js library.
+This will give a good tradeoff between interoperability, size and complexity. 
