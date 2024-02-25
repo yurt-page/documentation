@@ -52,10 +52,11 @@ But it also can be useful in a natural way. For example I'm using different mess
 * MS Teams, Flock, Slack or even Discord for a corporate job discussions.
 
 ## Own messanger
-So for my family and friends I need my own messanger with a server. I need a server for a file storage, End-to-End (E2E) encryption and ideally ability to work on local network in serverless mode. And here we have not so many options:
+So for my family and friends I need my own messanger with a server. I need a server for a file storage, End-to-End (E2E) encryption and ideally ability to work on local network in serverless mode. It doesn't make sense to use Tox over Tot network to talk with my wife in another room. Privacy can be relaxed and it's ok to have a metadata leak and use direct p2p connections. 
+And here we have not so many options:
 
 * Telegram has [open source clones](https://alternativeto.net/software/telegram/) with E2E encryption. Almost zero problems with migration. Still centralized and Android only.
-* Signal, Wire etc. Not so many advantages over Telegram + E2E. Higher possibility that they will be blocked (or less given that TG is more popular).
+* Signal, Wire etc. Not so many advantages over Telegram + E2E. Higher possibility that they will be blocked (or less given that TG is more popular). You can't use own server and most privacy features simply not needed.
 * [meshenger](https://github.com/meshenger-app/meshenger-android) P2P calls without the need for accounts or access to the Internet. There is no discovery mechanism, no meshing and no servers: just scan each others QR-Code. Android only.
 * [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)) P2P E2E DHT
 * Own XMPP server. We may try [Prosody](https://prosody.im/) on OpenWrt router. Looks like XMPP can work in XEP-0174: Serverless Messaging
