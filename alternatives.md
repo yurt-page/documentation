@@ -13,6 +13,10 @@ But there are always some difference in implementations,
 * [IndieBits](https://forum.indiebits.io/) about tunneling (BoringTunnel, TakingNames.io)
 * [Зачем нужен личный сайт в 2023 году](https://habr.com/en/companies/ruvds/articles/717952/)
 
+### FUTO Circles
+The [Circles app](https://circles.futo.org/about/) is an open source end to end encrypted social network for a family.
+Based on Matrix protocol.
+
 ### IndieWeb
 [IndieWeb](https://indieweb.org/) is a movement to leave social networks (they call them Silos) and use personal sites.
 They're working on creation of easy to use small website engines, technologies and standards to simplify websites to interact with each others.
