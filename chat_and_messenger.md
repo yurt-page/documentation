@@ -55,14 +55,17 @@ But it also can be useful in a natural way. For example I'm using different mess
 So for my family and friends I need my own messanger with a server. I need a server for a file storage, End-to-End (E2E) encryption and ideally ability to work on local network in serverless mode. It doesn't make sense to use Tox over Tot network to talk with my wife in another room. Privacy can be relaxed and it's ok to have a metadata leak and use direct p2p connections. 
 And here we have not so many options:
 
-* Telegram has [open source clones](https://alternativeto.net/software/telegram/) with E2E encryption. Almost zero problems with migration. Still centralized and Android only.
+* Telegram has [open source clones](https://alternativeto.net/software/telegram/) with E2E encryption. Almost zero problems with migration. Still centralized and Android only. But there are some "alternative" servers for telegram (like it was ofr ICQ).
 * Signal, Wire etc. Not so many advantages over Telegram + E2E. Higher possibility that they will be blocked (or less given that TG is more popular). You can't use own server and most privacy features simply not needed.
-* [meshenger](https://github.com/meshenger-app/meshenger-android) P2P calls without the need for accounts or access to the Internet. There is no discovery mechanism, no meshing and no servers: just scan each others QR-Code. Android only.
+* [meshenger](https://github.com/meshenger-app/meshenger-android) P2P calls without the need for accounts or access to the Internet. There is no discovery mechanism, no meshing and no servers: just scan each others QR-Code. Android only. Works badly.
+* Jami - a DHT based and somewhat can work locally if install their OpenDHT server. Looks more or less adequate. 
+* Briar - can work over Bluetooth. 
 * [Tox](https://en.wikipedia.org/wiki/Tox_(protocol)) P2P E2E DHT
 * Own XMPP server. We may try [Prosody](https://prosody.im/) on OpenWrt router. Looks like XMPP can work in XEP-0174: Serverless Messaging
 * Own Matrix server: written in Python and too heavy with the only advantage that it has good clients e.g. Element.io.
 * [FChat](https://github.com/stokito/pidgin-fchat) a simple(st) UDP based chat for local network without a server. The only one in its class. **UPD** https://www.kouchat.net/ has even Android app.
 * [NileshTrivedi/family](https://github.com/nileshtrivedi/family) A messaging app for closed, trusted groups. Outdated but has good design principles.
-* Anything web based: WebRTC+WebSockets. Needs for some TLS certificate.
+* Anything web based: WebRTC+WebSockets e.g. Jitsi. Needs for some TLS certificate.
+* https://conversejs.org/ an xmpp client in browser. Nice idea.
 
 A best comparision of secure chats https://bkil.gitlab.io/secuchart/
