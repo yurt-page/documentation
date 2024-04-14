@@ -4,7 +4,7 @@
 
 Yurt is a small house that is easy to construct.
 
-<img alt="Yurt near Issyk-Kul lake" width="320px" data-canonical-src="https://upload.wikimedia.org/wikipedia/commons/4/4f/YurtIssykFamily.jpg" src="https://camo.githubusercontent.com/69dd1b0c82aae39cf6322bde1384952e3fc7c23bdac2e15967ea794adf7eefea/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f342f34662f59757274497373796b46616d696c792e6a7067"/>
+<img alt="Yurt near Issyk-Kul lake" width="320px" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/YurtIssykFamily.jpg" />
 
 The YurtPage is a small homepage that all people can deploy on their own devices like router, Raspberry Pi, PC or even TV. Mainly routers because almost everybody have them and they consume small electricity and are always on.
 So you don't need to pay for hosting.
