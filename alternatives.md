@@ -145,7 +145,6 @@ They have a good ideology manifest.
 It's in development but some components like tunnel and JS crypto libraries are working and even used by other solutions.
 Here is some description https://git.rootprojects.org/root/meta
 
-
 ## Many other interesting
 There is a lot of similar projects that provide a ready to use self-host solutions.
 Some noteworthy:
@@ -179,3 +178,13 @@ In fact the Yurt should be the same Self-hosting Solution but with a few differe
    * Basically this is the main problem that if solved at least partially can make many peoples happy. Maybe it's possible some attractive minimal but accurate "suckles" design. 
 3. Almost all of them have a focus on privacy but for the Yurt it's totally fine to have some degree of centralization and to be more business friendly. E.g. if you wish to use analytic scripts then we weill add this option to you.
 
+## Decentralized protocols
+Many of them, good ideas but mostly bad implementations.
+* https://willowprotocol.org/ a protocol for peer-to-peer data stores. Fine-grained permissions, a keen approach to privacy, destructive edits, and a dainty bandwidth and memory footprint. See its a good written [Comparison to Other Protocols](https://willowprotocol.org/more/compare/index.html)
+* IPFS, FileCoin, Veilid - a torrent like p2p file storages
+* Scuttlebutt, Hypercore - chats 
+* Tangle Sync
+* Earthstar
+* Nostr
+* EteSync - more similar to Unhosted remote storage.
+* https://github.com/peter0x7f/DecentralizedTransferProtocol decentralize user data storage making running a web app less expensive, while also insuring user privacy.
