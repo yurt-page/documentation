@@ -141,9 +141,11 @@ It's based on Node.JS and idea is to make an easy to setup website.
 They have a good ideology manifest.
 
 ### Root project
-[https://therootcompany.com/](https://rootprojects.org/hub/) personal cloud. Again in Node.JS.
+https://therootcompany.com personal cloud. Again in Node.JS.
 It's in development but some components like tunnel and JS crypto libraries are working and even used by other solutions.
 Here is some description https://git.rootprojects.org/root/meta
+It's author https://github.com/coolaj86 makes a lot of useful things for self-hosting a libre movement and a lot of video lectures.
+
 
 ## Many other interesting
 There is a lot of similar projects that provide a ready to use self-host solutions.
