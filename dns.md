@@ -176,6 +176,11 @@ https://github.com/cunnie/sslip.io
 * https://www.kiv.zcu.cz/~ledvina/DHT/lecture13.pdf
 * https://mkaczanowski.com/golang-build-dynamic-dns-service-go/
 
+## Blockchain based 
+* NameCoin - the oldest
+* [Alfis](https://github.com/Revertron/Alfis) - minimal blockchain without cryptocurrency, capable of sustaining any number of domain names in a bunch of original alternative zones.
+* [Etherium Name System ETH](https://ens.domains/) - didn't even looked into because the whole Etherium is a scam and honey pot
+
 ## GNUnet Name System
 It also uses DHT a (but their own R5N) but very complicated to understand.
 https://lsd.gnunet.org/lsd0001/
