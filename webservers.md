@@ -72,6 +72,7 @@ Java
 * https://github.com/nitroshare/nitroshare-desktop C++, outdated but has GUI
 * https://github.com/mnutt/davros JS, used in Sandstorm by default. It's author is a cool guy.
 * https://github.com/mraukhvarger/webfs JS and Java
+* https://github.com/stackp/Droopy available from Debian repo
 
 
 
