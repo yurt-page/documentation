@@ -105,6 +105,7 @@ BTW WordPress provides RSS feed but for example you can't read it from another s
 NextCloud is a self-hosted "cloud" solution i.e. online disk like Google Photos and Google Disk.
 You cun upload files like photos and see them from browser or mobile app.  
 They are written in PHP which is too heavy for most routers. UI is also not perfect. API is problematic too.
+Some older projects like the https://SparkleShare.org ( [GitHub repo](https://github.com/hbons/SparkleShare)) are a good alternative.
 
 
 ## Self-hosting Solutions
