@@ -1,5 +1,5 @@
 ## Blog
-See [yurt-blog](https://github.com/yurt-page/yurt-blog) engine and [project ideas])https://github.com/orgs/yurt-page/projects/3).
+See [yurt-blog](https://github.com/yurt-page/yurt-blog) engine.
 
 Key features and ideas:
 * RSS must be supported. Only it gives real freedom for readers. In fact only RSS will be enough to make life better for most peoples.
