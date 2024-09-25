@@ -37,6 +37,7 @@ Shell script based site generators:
 * https://codeberg.org/vimuser/untitled uses pandoc templates. Used by libreboot.org
 * https://blot.im/ allows to create a blog from DropBox. Sources https://github.com/davidmerfield/blot
 * https://turtlapp.com/  collaborative notebook
+* https://github.com/luevano/luevano.xyz Python based static enerator
 
 WebDAV based blog engines:
 * https://github.com/katomaso/webdave
