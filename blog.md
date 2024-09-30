@@ -122,3 +122,6 @@ Same is possible with zstd.
 
 So as a conclusion the better option would be to use an RSS split to posts, minified and compressed with deflate in a browser with the pako.js library.
 This will give a good tradeoff between interoperability, size and complexity. 
+
+## Comment spam protection
+* https://blog.lopp.net/protect-contact-forms-from-spam-with-proof-of-work/ Hashcash
