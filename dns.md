@@ -9,10 +9,11 @@ You can buy a domain but...
 * Zones have their own rules. You may be easily lost your domain or just blocked, censored or eliminated by a competitor.
 
 
-The jkl.mn will offer a Dynamic DNS service.
+For now the main idea is to make the jkl.mn to offer a Dynamic DNS service.
 Each subdomain will be a random onion domain so that no needs to be registered.
-
 https://github.com/yurt-page/dyndns-onion
+But this creates a centralized point that I don't have resources to maintain. So maybe some decentralized Blockchain or DHT based approach would be better.
+
 
 ## nsupdate
 If you have an own DNS zone e.g. example.com then the DNS server supports a special command nsupdate which is an extension for DNS protocol.
@@ -65,6 +66,8 @@ Some notable DDNS providers:
 * https://github.com/BeyondCodeBootcamp/DuckDNS.sh
 * [yaddns](https://yaddns.github.io/) https://github.com/yaddns/yaddns written in C and outdated
 * https://github.com/mholt/caddy-dynamicdns/ for Caddy
+
+
 
 ### DNS API Libraries
 
@@ -140,7 +143,7 @@ It would be great to have a mnemonic names:
 ## P2P DNS based on DHT
 DNS must be authoritative but DHT doesn't guarantee that a record will be found or that the returned record is not faked.
 
-### KadNode - DynDNS alternative.
+### KadNode - DynDNS based on BitTorrent Mainline Kademlia DHT
 The [KadNode](https://github.com/mwarning/KadNode) is P2P DNS with content key, crypto key and PKI support.
 See [KadNode talk](https://www.youtube.com/watch?v=DFFNEoEYItE). It's in German, use auto-translate.
 
@@ -153,16 +156,25 @@ By itself the domains can be usual e.g. real registered or just a ECC public key
 Once KadNode resolves an IP it will try to connect itself and check that cert corresponds.
 This saves from connecting to another server with the IP of outdated domain.
 E.g. KadNode makes the same check that a browser makes when checks that a cert's domain corresponding to the domain.
-This adds an addional delay still, not so big.
+This adds an addional delay.
 
 The KadNode is based on mbedTLS that doesn't have ed25519 so it also can't generate onion-like domains.
 This is not a big deal but having interchangable domains is a nice thing to have.
 
-## IPNS from IPFS
-https://docs.ipfs.tech/concepts/ipns/
+### Related Projects
 
-## Local IP as domain + TLS
-https://github.com/cunnie/sslip.io
+* [pkdns](https://github.com/pubky/pkdns) and [Pkarr](https://github.com/pubky/pkarr) ed25519 pubkey domains on Mainline DHT. Join its chat https://matrix.to/#/#pkarr:matrix.org
+* [btlink](https://github.com/anacrolix/btlink) an HTTP addressing scheme for BitTorrent.
+* [opendht](https://github.com/savoirfairelinux/opendht/wiki) a DHT daemon [used by Ring softphone](https://blog.savoirfairelinux.com/en-ca/2015/ring-opendht-a-distributed-hash-table/). It has a pubsub feature which is great.
+* [DNSLink Standard](https://dnslink.org/) a format used by IPFS for DNS TXT records to associate content and identifiers with a domain.
+* [IPNS from IPFS](https://docs.ipfs.tech/concepts/ipns/)
+* [Tor Onion Services](https://en.wikipedia.org/wiki/.onion) internally uses DHT with additional protections
+* [GNUnet Name System](https://gnunet.org/) uses own fast DHT (R5N) but very complicated to understand. Like in the Tor DNS requests are anonomyzed. See the [GNS technical specification](https://lsd.gnunet.org/lsd0001/)
+* Blockchain based:
+  * [NameCoin](https://www.namecoin.org/) blockchain for DNS that solves [Zuko's Triangle](https://en.wikipedia.org/wiki/Zooko%27s_triangle) allowing you to have a meaninful name. You have to buy the crypto (not so easy), domains are cheap but expires to avoid squating.
+  * [Alfis](https://github.com/Revertron/Alfis) - minimal blockchain without cryptocurrency, capable of sustaining any number of domain names in a bunch of original alternative zones.
+  * [Etherium Name System ETH](https://ens.domains/) - didn't even looked into because the whole Etherium is a scam. See an article from the NameCoin dev [No, Ethereum Name Service is still a clown show](https://yanmaani.github.io/no-ethereum-name-service-is-still-a-clown-show/)
+
 
 ### Other attempts and research
 * https://github.com/Mononofu/P2P-DNS early attempt to introduce .p2p domain, abandoned
@@ -176,14 +188,6 @@ https://github.com/cunnie/sslip.io
 * https://www.kiv.zcu.cz/~ledvina/DHT/lecture13.pdf
 * https://mkaczanowski.com/golang-build-dynamic-dns-service-go/
 
-## Blockchain based 
-* NameCoin - the oldest
-* [Alfis](https://github.com/Revertron/Alfis) - minimal blockchain without cryptocurrency, capable of sustaining any number of domain names in a bunch of original alternative zones.
-* [Etherium Name System ETH](https://ens.domains/) - didn't even looked into because the whole Etherium is a scam and honey pot
-
-## GNUnet Name System
-It also uses DHT a (but their own R5N) but very complicated to understand.
-https://lsd.gnunet.org/lsd0001/
 
 ## DNS SEC
 * https://mforney.org/blog/2020-05-21-securing-your-zone-with-dnssec-and-dane.html
@@ -195,6 +199,9 @@ The DANE protocol used to set a TLS cert with DSN record. This makes possible to
 * https://www.youtube.com/watch?v=nt261DzHdNU Use DANE for TLS cert for NameCoin
 * https://habr.com/ru/company/1cloud/blog/454322/ DANE для браузеров провалилась
 
+
+## Local IP as domain + TLS
+https://github.com/cunnie/sslip.io
 
 
 ## DNS pull
