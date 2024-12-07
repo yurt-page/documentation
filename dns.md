@@ -1,12 +1,24 @@
 # Domains and DNS
-Domains and DNS is surprisingly a very big problem for a self hosting.
-You can buy a domain but...
-* It's not that cheap. Children don't have their money at all.
-* Those money goes to the DNS mafia basically for nothing.
-* And don't forget to renew it. 146% of homepages had their domain expired. Then is can be hijacked by squatters.
-* This is a manual step. And you have to find a good and free name.
-* It complicated to configure: you need to understand what does it mean A, AAAA, MX, NS and other records.
-* Zones have their own rules. You may be easily lost your domain or just blocked, censored or eliminated by a competitor.
+Domains and DNS is surprisingly a very big problem for a self hosting:
+
+* A domain is not that cheap. For people from reach countries this is not a problem but this is a big problem for others (Like me when I was a student. Even now I decided that my domain doesn't worth that money and canceled). 
+* And don't forget to renew it. Most of homepages had their domain expired. Then is can be hijacked by squatters. This is what happened for me too. And I can't understand where the squatters takes a money to pay for my domain, unless they don't really pay anything.
+* Good luck to find a good and not taken name.
+  * You may also violate a trademark.
+  * Frauders may create a fishing "your-bank" domain.
+* It complicated to configure:
+  * This is a manual step to buy a domain.
+  * There is no a singe DNS config API and instead we there are over hundred APIs for each registrar.
+  * You need to understand what does it mean these A, AAAA, MX, NS and other records.
+* Zones have their own rules about content of your site.
+  * You may be easily lost your domain or just blocked, censored or eliminated by a competitor.
+  * A lot of fake abuse reports may harm your business (not really a problem for self hosting).
+* Those money goes to the ICANN monopoly basically for nothing. Some registrars are controlled by suspissios organizations or even mafias.
+* There are no a good geographical distribution between registrars:
+  * Most of them are in US, some in German other big countries may have only three-four registrars and entire continents are underrepresented.
+  * This is inequality but also have some risks and problems like unability to pay in local currencies and payment systems.
+  * Some TLDs are belongs to big corporations (e.g. `.dev` by Google) that erodes DNS neutrality.
+  * There are a few big registrars that takes most of market and form a cartel.
 
 
 For now the main idea is to make the jkl.mn to offer a Dynamic DNS service.
@@ -38,8 +50,8 @@ Some protocol descriptions:
 
 
 
-### Providers
-Some notable DDNS providers:
+### DDNS providers
+
 * [DynDNS](https://dyn.com)
 * [No-IP](https://www.noip.com/)
 * [Duck DNS](https://duckdns.org) free service, widely supported
@@ -135,8 +147,8 @@ We can add to a Yurt the Single Onion Service by default but it will be accessib
 Also the Tor is too heavy for regular routers: it depends on OpenSSL (>1mb) and creates additional files https://lists.torproject.org/pipermail/tor-dev/2022-July/014751.html
 
 It would be great to have a mnemonic names:
-* https://www.youtube.com/watch?v=zZzOVKPcIMg Jesse Victors - The Onion Name System: Tor-powered Decentralized DNS for Tor Onion Services
-* https://www.sauteed-onions.org/ we can attach an existing domain to an .onion with a subdomain
+* [Video: Jesse Victors - The Onion Name System: Tor-powered Decentralized DNS for Tor Onion Services](https://www.youtube.com/watch?v=zZzOVKPcIMg)
+* https://www.sauteed-onions.org/ we can attach an existing domain to an `.onion` with a subdomain
 
 
 
@@ -160,6 +172,7 @@ This adds an addional delay.
 
 The KadNode is based on mbedTLS that doesn't have ed25519 so it also can't generate onion-like domains.
 This is not a big deal but having interchangable domains is a nice thing to have.
+
 
 ### Related Projects
 
@@ -187,6 +200,20 @@ This is not a big deal but having interchangable domains is a nice thing to have
 * https://web.cs.ucla.edu/~lixia/papers/06INFOCOM.pdf
 * https://www.kiv.zcu.cz/~ledvina/DHT/lecture13.pdf
 * https://mkaczanowski.com/golang-build-dynamic-dns-service-go/
+
+#### Some papers about p2p systems and DHTs for newcomers
+
+* [A Survey and Comparison of Peer-to-Peer Overlay Network Schemes](https://snap.stanford.edu/class/cs224w-readings/lua04p2p.pdf) - a general overview of existing systems
+* [Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications](https://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf) -a prtocol and algorythm of DHT
+* [Pastry: Scalable, decentralized object location and routing for large-scale peer-to-peer systems](https://www.cs.cornell.edu/people/egs/615/pastry.pdf) - an overlay network and DHT
+* [Tapestry: An infrastructure for fault-tolerant wide-area location and routing](https://people.cs.uchicago.edu/~ravenben/publications/CSD-01-1141.pdf) - overlay network and DHT
+* [Kademlia: A Peer-to-Peer Information System Based on the XOR Metric](https://pdos.csail.mit.edu/~petar/papers/maymounkov-kademlia-lncs.pdf) - the most known and stable DHT implementaton
+* [BitTorrent Whitepaper](https://www.bittorrent.com/btt/btt-docs/BitTorrent_(BTT)_White_Paper_v0.8.7_Feb_2019.pdf) - the most accurate description of BitTorrent protocol
+* [Freenet: A Distributed Anonymous Information Storage and Retrieval System](http://snap.stanford.edu/class/cs224w-readings/clarke00freenet.pdf) - an overlay network that rpvides anonimity to to both content readers and providers
+* [Vivaldi: A Decentralized Network Coordinate System](https://pdos.csail.mit.edu/papers/vivaldi:sigcomm/paper.pdf) - an algorythm that counts network delays to peers
+* [Tribler: A Social-Based Peer-to-Peer System](https://iptps06.cs.ucsb.edu/papers/Pouw-Tribler06.pdf) - BitTorrent + anonymity
+
+
 
 
 ## DNS SEC
