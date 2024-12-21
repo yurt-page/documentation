@@ -1,7 +1,7 @@
 # Email
 EMail is a corner stone of Internet, and it's important to give users an ability to send and receive them.
 Emails are very important for privacy: if you read someone's email you know what they buy, what websites they visit, what happens in their life.
-If email hacked then you can reset passwords on all websites. **Unless you have a secure email you can't really be asfe in internet.**
+If email hacked then you can reset passwords on all websites. **Unless you have a secure email you can't really be safe in internet.**
 <details>
 <summary>What is used nowadays</summary>
 
@@ -21,6 +21,10 @@ Email transferred with SMTP protocol but this is server to server push style pro
 Regular users also needs a MUA client with POP3 or newer IMAP to pull their received mail from the SMTP server. They may use web access instead.
 When a user sends a letter from MUA it connects to configured Submitting SMTP server on port 587. It requires authorization.
 It adds DKIM signature to confirm that the letter is sent from the domain and retransmitted to receiver's SMTP server over 25 port.
+
+At beginning only the SMTP protocol existed. A user logged in to a terminal (that had an SMTP) and saw a received messages.
+The POP protocol was created because many users didn't had own SMTP server and they had to fetch mail from another server.
+
 
 ## Technical problems
 See [IndieWeb](https://indieweb.org/email)
